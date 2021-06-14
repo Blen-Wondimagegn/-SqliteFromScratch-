@@ -49,7 +49,6 @@ namespace SqliteFromScratch.Controllers {
                         UnitPrice = reader.GetInt32(8)
                     };
                        tracks.Add(newTrack);
-                     // add each one to the list.
                  }
              }
          }

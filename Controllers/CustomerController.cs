@@ -9,9 +9,11 @@ namespace SqliteFromScratch.Controllers {
     // MVC is handling the routing for you.
     [Route("api/[Controller]")]
     
-    public class CustomerContoller : Controller {
+    public class CustomerController : Controller {
 
         [HttpGet]
+     
+    
         public List<Customer> GetData()
         {
 
@@ -20,9 +22,6 @@ namespace SqliteFromScratch.Controllers {
 
      // GetFullPath will complete the path for the file named passed in as a string.
      string dataSource = "Data Source=" + Path.GetFullPath("chinook.db");
-
-     // using will make sure that the resource is cleaned from memory after it exists
-     // conn initializes the connection to the .db file.
      using(SqliteConnection conn = new SqliteConnection(dataSource)) {
 
          conn.Open();
@@ -38,17 +37,17 @@ namespace SqliteFromScratch.Controllers {
                        Customer newCustomer = new Customer() {
                         Id = reader.GetInt32(0),
                         FirstName = reader.GetString(1),
-                        LastName = reader.GetString(1),
-                        Company = reader.GetString(1),
-                        Address = reader.GetString(1),
-                        City = reader.GetString(1),
-                        State = reader.GetString(1),
-                        Country = reader.GetString(1),
-                        PostalCode = reader.GetString(1),
-                        Phone = reader.GetString(1),
-                        Fax = reader.GetString(1),
-                        Email = reader.GetString(1),
-                        SupportRepId  = reader.GetInt32(7)
+                        LastName = reader.GetString(2),
+                        Company = reader.GetValue(3).ToString(),
+                        Address = reader.GetValue(4).ToString(),
+                        City = reader.GetValue(5).ToString(),
+                        State = reader.GetValue(6).ToString(),
+                        Country = reader.GetValue(7).ToString(),
+                        PostalCode = reader.GetValue(8).ToString(),
+                        Phone = reader.GetValue(9).ToString(),
+                        Fax = reader.GetValue(10).ToString(),
+                        Email = reader.GetValue(11).ToString(),
+                        SupportRepId  = reader.GetInt32(12)
                       
                     };
                        customers.Add(newCustomer);
